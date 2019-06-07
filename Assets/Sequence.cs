@@ -17,6 +17,8 @@ public class Sequence : MonoBehaviour
     public float[] endtime = new float[16];
     int index = 0;
 
+    int seqindex = 0;
+
     public string ButtonSEQ="";
      public float result = 0;
     public bool end = false;
@@ -83,11 +85,12 @@ public class Sequence : MonoBehaviour
 
     public void CreateSession()
     {
-        StartCoroutine(SEQA(2));
-        
-        
+         //StartCoroutine(SEQA(2));
+        Sequenz("ACBDCADBDABCBDCABCDA", 2);
 
-       
+
+
+
 
     }
 
@@ -212,6 +215,88 @@ public class Sequence : MonoBehaviour
 
 
 
+    public   void Sequenz( string seq , float dur  )
+    {
+
+               StartCoroutine( Blink(seq, dur));
+
+
+
+           
+
+
+
+    }
+
+    public IEnumerator Blink(string name, float dur)
+    {
+        
+
+        Debug.Log("Start");
+
+        if (name[seqindex] == 'A')
+        {
+            Debug.Log("A");
+            B1.color = Color.red;
+            Timer = Time.time;
+            yield return new WaitForSeconds(dur);
+            B1.color = Color.white;
+            seqindex++;
+
+
+        }
+
+
+        if (name[seqindex]=='B')
+        {
+
+            Debug.Log("B");
+            B2.color = Color.red;
+            Timer = Time.time;
+            yield return new WaitForSeconds(dur);
+            B2.color = Color.white;
+            seqindex++;
+        }
+
+
+
+        if (name[seqindex] == 'C')
+        {
+
+            Debug.Log("C");
+            B3.color = Color.red;
+            Timer = Time.time;
+            yield return new WaitForSeconds(dur);
+            B3.color = Color.white;
+            seqindex++;
+        }
+
+
+        if (name[seqindex] == 'D')
+        {
+            Debug.Log("D");
+            B4.color = Color.red;
+            Timer = Time.time;
+            yield return new WaitForSeconds(dur);
+            B4.color = Color.white;
+            seqindex++;
+        }
+
+        if (seqindex < name.Length)
+        {
+            StartCoroutine(Blink(name, 2));
+
+        }
+
+
+
+
+
+
+
+
+
+    }
 
 
     public void RandomSequence()
