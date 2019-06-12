@@ -54,8 +54,17 @@ public class Session : MonoBehaviour
 
             if (end)
             {
+
+                canPress = false;
                 CSWriter cs = new CSWriter(mSequences, mPushedbtn, mMeasuredTime);
                 cs.GenerateCSVFile();
+
+                B1.color = Color.green;
+                B2.color = Color.green;
+                B3.color = Color.green;
+                B4.color = Color.green;
+
+
             }
 
 
