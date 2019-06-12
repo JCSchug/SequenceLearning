@@ -17,11 +17,13 @@ public class Sequence : MonoBehaviour
     public float[] endtime = new float[16];
     int index = 0;
 
-    int seqindex = 0;
+    public int seqindex = 0;
 
     public string ButtonSEQ="";
      public float result = 0;
-    public bool end = false;
+ 
+    public bool canPress=false;
+    private bool end=false;
 
 
     // Start is called before the first frame update
@@ -44,40 +46,59 @@ public class Sequence : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            B1.color = Color.white;
-            endtime[index]= Time.time-Timer;
-            Debug.Log(result);
-            ButtonSEQ += " A";
-            index++;
+
+            if (canPress)
+            {
+                B1.color = Color.white;
+                endtime[index] = Time.time - Timer;
+                
+                ButtonSEQ += " A";
+                index++;
+
+
+                canPress = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            B2.color = Color.white;
-            endtime[index]=Time.time - Timer;
-            Debug.Log(result);
-            ButtonSEQ += " S";
-            index++;
+
+            if (canPress)
+            {
+                B2.color = Color.white;
+                endtime[index] = Time.time - Timer;
+               
+                ButtonSEQ += " S";
+                index++;
+                canPress = false;
+            }
         }
 
 
         if (Input.GetKeyDown(KeyCode.K))
-        {
-            B3.color = Color.white;
-            endtime[index] = Time.time - Timer;
-            Debug.Log(result);
-            ButtonSEQ += " K";
-            index++;
+        {   if (canPress)
+            {
+                B3.color = Color.white;
+                endtime[index] = Time.time - Timer;
+                
+                ButtonSEQ += " K";
+                index++;
+                canPress=false;
+            }
         }
 
         
         if (Input.GetKeyDown(KeyCode.L))
         {
-            B4.color = Color.white;
-            endtime[index] = Time.time - Timer;
-            Debug.Log(result);
-            ButtonSEQ += " L";
-            index++;
+            if (canPress)
+            {
+                B4.color = Color.white;
+                endtime[index] = Time.time - Timer;
+                
+                ButtonSEQ += " L";
+                index++;
+                canPress = false;
+            }
         }
 
 
@@ -85,8 +106,9 @@ public class Sequence : MonoBehaviour
 
     public void CreateSession()
     {
+        
          //StartCoroutine(SEQA(2));
-        Sequenz("ACBDCADBDABCBDCABCDA", 2);
+        Session("ACBDCADBDABCBDCA", 2);
 
 
 
@@ -215,7 +237,7 @@ public class Sequence : MonoBehaviour
 
 
 
-    public   void Sequenz( string seq , float dur  )
+    public   void Session( string seq , float dur  )
     {
 
                StartCoroutine( Blink(seq, dur));
@@ -230,33 +252,40 @@ public class Sequence : MonoBehaviour
 
     public IEnumerator Blink(string name, float dur)
     {
+
+
+        // Debug.Log("Start");
+
         
 
-        Debug.Log("Start");
+
 
         if (name[seqindex] == 'A')
         {
             Debug.Log("A");
             B1.color = Color.red;
             Timer = Time.time;
+            canPress = true;
             yield return new WaitForSeconds(dur);
             B1.color = Color.white;
-            seqindex++;
+           if(seqindex < name.Length - 1) seqindex++;
 
 
-        }
+
+            }
 
 
-        if (name[seqindex]=='B')
+        if (name[seqindex] == 'B')
         {
 
             Debug.Log("B");
             B2.color = Color.red;
             Timer = Time.time;
+            canPress = true;
             yield return new WaitForSeconds(dur);
             B2.color = Color.white;
-            seqindex++;
-        }
+            if (seqindex < name.Length - 1) seqindex++;
+            }
 
 
 
@@ -266,27 +295,56 @@ public class Sequence : MonoBehaviour
             Debug.Log("C");
             B3.color = Color.red;
             Timer = Time.time;
+            canPress = true;
             yield return new WaitForSeconds(dur);
             B3.color = Color.white;
-            seqindex++;
-        }
+            if (seqindex < name.Length - 1) seqindex++;
+            }
 
 
         if (name[seqindex] == 'D')
         {
+
+              
             Debug.Log("D");
             B4.color = Color.red;
             Timer = Time.time;
+            canPress = true;
             yield return new WaitForSeconds(dur);
             B4.color = Color.white;
-            seqindex++;
+            if(seqindex<name.Length-1) seqindex++;
+
+
+            }
+
+            if (!end)
+            {
+                if (seqindex <= name.Length - 1)
+                {
+
+                    StartCoroutine(Blink(name, 2));
+                
+
+                }
+
+            if (seqindex == name.Length - 1)
+            { end = true; }
+
         }
 
-        if (seqindex < name.Length)
-        {
-            StartCoroutine(Blink(name, 2));
+            
 
-        }
+        
+           
+
+       
+           
+
+        
+
+
+
+
 
 
 
@@ -299,11 +357,42 @@ public class Sequence : MonoBehaviour
     }
 
 
-    public void RandomSequence()
+    public void RandomSequenz()
     {
 
 
 
+    }
+
+
+    public string  Sequenz(string seqname)
+    {
+        seqname.ToUpper();
+        switch (seqname)
+        {
+
+            //1324
+            
+            case "A": return "ACBD";
+
+            //3142
+            case "B": return "CADB";
+            //4123
+            case "C": return "DABC";
+            //2431
+            case "D": return "BDCA";
+            //2341
+            case "E": return "BCDA";
+
+            default: return "A";
+             
+
+
+
+        }
+
+
+       
     }
   
 }
