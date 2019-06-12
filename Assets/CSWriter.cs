@@ -41,7 +41,7 @@ public class CSWriter : MonoBehaviour
     public void GenerateCSVFile()
     {
         string date = DateTime.Now.ToString("dd-MM-yyyy+HH-mm-ss");
-        string filepath = getPath() + date + ".csv";
+        string filepath = getPath() + "Probant000+"+date + ".csv";
         Debug.Log(filepath);
         StreamWriter csvWriter = new StreamWriter(filepath);
         csvWriter.WriteLine("Sequence, pushedBTN, succes, measuredTime");
