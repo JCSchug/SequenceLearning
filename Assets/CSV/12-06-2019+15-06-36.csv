@@ -1,0 +1,17 @@
+Sequence, pushedBTN, succes, measuredTime
+A,A,True,0.84
+C,C,True,0.52
+B,D,False,0.66
+D,C,False,0.81
+C,B,False,1.13
+A,B,False,1.04
+D,C,False,0.91
+B,B,True,0.90
+D,D,True,0.69
+A,B,False,0.73
+B,C,False,0.73
+C,D,False,0.63
+B,A,False,0.69
+D,B,False,0.71
+C,B,False,0.68
+A,B,False,0.73

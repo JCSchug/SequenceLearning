@@ -50,7 +50,15 @@ public class Sequence : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            CreateSession();
+            if(!end) CreateSession();
+
+            if (end)
+            {
+                CSWriter cs = new CSWriter(mSequences, mPushedbtn, mMeasuredTime);
+                cs.GenerateCSVFile();
+            }
+
+
         }
 
 
@@ -69,6 +77,10 @@ public class Sequence : MonoBehaviour
 
                 index++;
                 canPress = false;
+
+              
+
+
             }
         }
 
@@ -81,10 +93,14 @@ public class Sequence : MonoBehaviour
 
                 endtime = Time.time - Timer;
                 mMeasuredTime.Add(endtime);
-                mPushedbtn.Add("S");
+                mPushedbtn.Add("B");
 
                 index++;
                 canPress = false;
+
+
+               
+
             }
         }
 
@@ -96,10 +112,13 @@ public class Sequence : MonoBehaviour
 
                 endtime = Time.time - Timer;
                 mMeasuredTime.Add(endtime);
-                mPushedbtn.Add("K");
+                mPushedbtn.Add("C");
 
                 index++;
                 canPress=false;
+
+             
+
             }
         }
 
@@ -112,10 +131,13 @@ public class Sequence : MonoBehaviour
 
                 endtime = Time.time - Timer;
                 mMeasuredTime.Add(endtime);
-                mPushedbtn.Add("L");
+                mPushedbtn.Add("D");
 
                 index++;
                 canPress = false;
+
+               
+
             }
         }
 
@@ -359,24 +381,23 @@ public class Sequence : MonoBehaviour
                 //ENDE
             if (seqindex == name.Length - 1)
             {
-                CSWriter cs = new CSWriter(mSequences, mPushedbtn, mMeasuredTime);
-                cs.GenerateCSVFile();
+               
                 end = true;
                
 
             }
 
+
         }
 
-            
 
-        
-           
 
-       
-           
 
-        
+
+
+
+
+
 
 
 
