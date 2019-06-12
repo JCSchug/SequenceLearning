@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Sequence : MonoBehaviour
+public class Session : MonoBehaviour
 {
    
     public SpriteRenderer B1;
@@ -27,7 +27,7 @@ public class Sequence : MonoBehaviour
     public int seqindex = 0;
    // public string ButtonSEQ="";
     public float result = 0;
-    public bool canPress=false;
+    public bool  canPress=false;
     private bool end=false;
 
 
@@ -158,7 +158,7 @@ public class Sequence : MonoBehaviour
         }
 
         
-        Session(SEQSTRING, 2);
+        StartSession(SEQSTRING, 2);
 
 
 
@@ -166,149 +166,14 @@ public class Sequence : MonoBehaviour
 
     }
 
-   public IEnumerator SEQA( float dur)
-    {
-
-        Debug.Log("Sequenz A Start ");
-        yield return new WaitForSeconds(dur);
-        B1.color = Color.red;
-        Timer= Time.time;
-        yield  return new WaitForSeconds(dur);
-        B1.color = Color.white;
-
-        B3.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B3.color = Color.white;
-
-        B2.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B2.color = Color.white;
-
-        B4.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B4.color = Color.white;
-
-
-        Debug.Log("Sequenz A Ende  ");
-
-        StartCoroutine(SEQB(2));
-
-
-    }
-
-
-    public IEnumerator SEQB(float dur)
-    {
-
-        Debug.Log("Sequenz B  Start ");
-        B3.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B3.color = Color.white;
-
-        B1.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B1.color = Color.white;
-
-        B4.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B4.color = Color.white;
-
-        B2.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B2.color = Color.white;
-
-
-        Debug.Log("Sequenz B Ende  ");
-
-        StartCoroutine(SEQC(2));
-
-     
-    }
-    public IEnumerator SEQC(float dur)
-    {
-
-        Debug.Log("Sequenz C Start ");
-        B4.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B4.color = Color.white;
-
-        B1.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B1.color = Color.white;
-
-        B2.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B2.color = Color.white;
-
-        B3.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B3.color = Color.white;
-
-        Debug.Log("Sequenz C Ende  ");
-        StartCoroutine(SEQD(2));
-
-    }
-
-    public IEnumerator SEQD(float dur)
-    {
-        Debug.Log("Sequenz D Ende  ");
-        B2.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B2.color = Color.white;
-
-        B4.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B4.color = Color.white;
-
-        B3.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B3.color = Color.white;
-
-        B1.color = Color.red;
-        Timer = Time.time;
-        yield return new WaitForSeconds(dur);
-        B1.color = Color.white;
-        Debug.Log("Sequenz D Ende  ");
-    }
-
-
-
-    public   void Session( string seq , float dur  )
+    public  void StartSession( string seq , float dur  )
     {
 
                StartCoroutine( Blink(seq, dur));
-
-
-
-           
-
-
-
     }
 
     public IEnumerator Blink(string name, float dur)
     {
-
-
-        // Debug.Log("Start");
-
-        
-
-
 
         if (name[seqindex] == 'A')
         {
@@ -318,9 +183,7 @@ public class Sequence : MonoBehaviour
             canPress = true;
             yield return new WaitForSeconds(dur);
             B1.color = Color.white;
-           if(seqindex < name.Length - 1) seqindex++;
-
-
+            if(seqindex < name.Length - 1) seqindex++;
 
             }
 
@@ -335,6 +198,8 @@ public class Sequence : MonoBehaviour
             yield return new WaitForSeconds(dur);
             B2.color = Color.white;
             if (seqindex < name.Length - 1) seqindex++;
+
+
             }
 
 
@@ -349,6 +214,7 @@ public class Sequence : MonoBehaviour
             yield return new WaitForSeconds(dur);
             B3.color = Color.white;
             if (seqindex < name.Length - 1) seqindex++;
+
             }
 
 
@@ -366,7 +232,7 @@ public class Sequence : MonoBehaviour
 
 
             }
-
+            // Rekursiver Aufruf der Klasse
             if (!end)
             {
                 if (seqindex <= name.Length - 1)
@@ -414,42 +280,9 @@ public class Sequence : MonoBehaviour
     }
 
 
-    public void RandomSequenz()
-    {
-
-
-
-    }
-
-
-    public string  Sequenz(string seqname)
-    {
-        seqname.ToUpper();
-        switch (seqname)
-        {
-
-            //1324
-            
-            case "A": return "ACBD";
-
-            //3142
-            case "B": return "CADB";
-            //4123
-            case "C": return "DABC";
-            //2431
-            case "D": return "BDCA";
-            //2341
-            case "E": return "BCDA";
-
-            default: return "A";
-             
-
-
-
-        }
-
+    
 
        
-    }
+    
   
 }
