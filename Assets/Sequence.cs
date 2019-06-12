@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Sequence : MonoBehaviour
 {
    
@@ -14,16 +15,26 @@ public class Sequence : MonoBehaviour
     public SpriteRenderer B4;
     
     public float Timer = 0;
-    public float[] endtime = new float[16];
+    public float endtime = 0;
+
+    public List<string> mSequences = new List<string>();
+    public List<string> mPushedbtn = new List<string>();
+    public List<float> mMeasuredTime = new List<float>();
+    private string SEQSTRING="";
+
+
     int index = 0;
-
     public int seqindex = 0;
-
-    public string ButtonSEQ="";
-     public float result = 0;
- 
+   // public string ButtonSEQ="";
+    public float result = 0;
     public bool canPress=false;
     private bool end=false;
+
+
+
+
+ 
+
 
 
     // Start is called before the first frame update
@@ -50,12 +61,13 @@ public class Sequence : MonoBehaviour
             if (canPress)
             {
                 B1.color = Color.white;
-                endtime[index] = Time.time - Timer;
-                
-                ButtonSEQ += " A";
+
+                endtime = Time.time - Timer;
+                mMeasuredTime.Add(endtime);
+                mPushedbtn.Add("A");
+
+
                 index++;
-
-
                 canPress = false;
             }
         }
@@ -66,9 +78,11 @@ public class Sequence : MonoBehaviour
             if (canPress)
             {
                 B2.color = Color.white;
-                endtime[index] = Time.time - Timer;
-               
-                ButtonSEQ += " S";
+
+                endtime = Time.time - Timer;
+                mMeasuredTime.Add(endtime);
+                mPushedbtn.Add("S");
+
                 index++;
                 canPress = false;
             }
@@ -79,9 +93,11 @@ public class Sequence : MonoBehaviour
         {   if (canPress)
             {
                 B3.color = Color.white;
-                endtime[index] = Time.time - Timer;
-                
-                ButtonSEQ += " K";
+
+                endtime = Time.time - Timer;
+                mMeasuredTime.Add(endtime);
+                mPushedbtn.Add("K");
+
                 index++;
                 canPress=false;
             }
@@ -93,9 +109,11 @@ public class Sequence : MonoBehaviour
             if (canPress)
             {
                 B4.color = Color.white;
-                endtime[index] = Time.time - Timer;
-                
-                ButtonSEQ += " L";
+
+                endtime = Time.time - Timer;
+                mMeasuredTime.Add(endtime);
+                mPushedbtn.Add("L");
+
                 index++;
                 canPress = false;
             }
@@ -106,9 +124,19 @@ public class Sequence : MonoBehaviour
 
     public void CreateSession()
     {
+
+        //StartCoroutine(SEQA(2));
+        SEQSTRING = "ACBDCADBDABCBDCA";
+        for (int i = 0; i < SEQSTRING.Length; i++)
+        {
+
+            mSequences.Add(""+SEQSTRING[i]);
+
+
+        }
+
         
-         //StartCoroutine(SEQA(2));
-        Session("ACBDCADBDABCBDCA", 2);
+        Session(SEQSTRING, 2);
 
 
 
@@ -327,8 +355,16 @@ public class Sequence : MonoBehaviour
 
                 }
 
+
+                //ENDE
             if (seqindex == name.Length - 1)
-            { end = true; }
+            {
+                CSWriter cs = new CSWriter(mSequences, mPushedbtn, mMeasuredTime);
+                cs.GenerateCSVFile();
+                end = true;
+               
+
+            }
 
         }
 
