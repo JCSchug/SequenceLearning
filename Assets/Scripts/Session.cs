@@ -172,7 +172,7 @@ public class Session : MonoBehaviour
     }
     public void CreateSession()
     {
-        StartSession(session, .1f);
+        StartSession(session, 1f);
     }
 
     public void StartSession(Sess session, float dur)
@@ -211,7 +211,7 @@ public class Session : MonoBehaviour
                         BTN_INDEX = 0;
                         seqindex++;
                     }
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(.25f);
                     break;
                 case "B":
                     B2.color = Color.red;
@@ -237,7 +237,7 @@ public class Session : MonoBehaviour
                         BTN_INDEX = 0;
                         seqindex++;
                     }
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0.25f);
                     break;
                 case "C":
                     B3.color = Color.red;
@@ -263,7 +263,7 @@ public class Session : MonoBehaviour
                         BTN_INDEX = 0;
                         seqindex++;
                     }
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0.25f);
                     break;
                 case "D":
                     B4.color = Color.red;
@@ -289,7 +289,7 @@ public class Session : MonoBehaviour
                         BTN_INDEX = 0;
                         seqindex++;
                     }
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0.25f);
                     break;
             }
         }
