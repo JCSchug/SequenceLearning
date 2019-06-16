@@ -18,14 +18,13 @@ public class Session : MonoBehaviour
     private GameObject Finish_panel;
 
 
-    private string[] Sequences;
-    private string[] mPushedbtn;
+    private int[] Sequences;
+    private int[] mPushedbtn;
     private float[] mMeasuredTime;
-    private string[] mTrueBTN;
+    private int[] mTrueBTN;
     int index = 0;
     public int seqindex = 0;
-    private int ITERARTION_INDEX = 1;
-    private string ButtonSEQ = "";
+    private int REPITION_INDEX = 1;
     public float result = 0;
     public bool canPress = false;
     private bool pressed = false;
@@ -57,7 +56,7 @@ public class Session : MonoBehaviour
                 Sequences[index] = session.MSequences[seqindex].MSequenceName;
                 mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                 mMeasuredTime[index] = endtime;
-                mPushedbtn[index] = "A";
+                mPushedbtn[index] = 1;
 
                 index++;
                 canPress = false;
@@ -75,7 +74,7 @@ public class Session : MonoBehaviour
                 Sequences[index] = session.MSequences[seqindex].MSequenceName;
                 mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                 mMeasuredTime[index] = endtime;
-                mPushedbtn[index] = "B";
+                mPushedbtn[index] = 2;
 
                 index++;
                 canPress = false;
@@ -92,7 +91,7 @@ public class Session : MonoBehaviour
                 Sequences[index] = session.MSequences[seqindex].MSequenceName;
                 mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                 mMeasuredTime[index] = endtime;
-                mPushedbtn[index] = "C";
+                mPushedbtn[index] = 3;
 
                 index++;
                 canPress = false;
@@ -109,7 +108,7 @@ public class Session : MonoBehaviour
                 Sequences[index] = session.MSequences[seqindex].MSequenceName;
                 mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                 mMeasuredTime[index] = endtime;
-                mPushedbtn[index] = "D";
+                mPushedbtn[index] = 4;
 
                 index++;
                 canPress = false;
@@ -126,7 +125,7 @@ public class Session : MonoBehaviour
                     Sequences[index] = session.MSequences[seqindex].MSequenceName;
                     mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                     mMeasuredTime[index] = endtime;
-                    mPushedbtn[index] = Input.inputString.ToUpper();
+                    mPushedbtn[index] = 5;
 
                     index++;
                     canPress = false;
@@ -143,31 +142,22 @@ public class Session : MonoBehaviour
     }
     private void Init()
     {
-        Sequence A = new Sequence(new string[] { "A", "C", "B", "D" }, "A");//1324
-        Sequence B = new Sequence(new string[] { "C", "A", "D", "B" }, "B");//3142
-        Sequence C = new Sequence(new string[] { "D", "A", "B", "C" }, "C");//4123
-        Sequence D = new Sequence(new string[] { "B", "D", "C", "A" }, "D");//2431
-        Sequence R = new Sequence(new string[4], "R");//Random
-        //List<Sequence> mSequences = new List<Sequence> { A, B, C, D, E, R, B, C, A, E, D, R, B, A, D, C, E, R, D, B, A, E, C, R, E, D, B, C, A, R };/*ACBDCADBDABCBDCA*///Initializing: 1200 Units of Information
-        List<Sequence> mSequences = new List<Sequence> { A, B, R, C, D, R };
-        //After initializing, creating Randoms in for loop.
-        for (int i = 0; i < mSequences.Count; i++)
+        Sequence A = new Sequence(new int[] { 1, 4, 3, 1, 3, 2 }, 1);//1324
+        Sequence R = new Sequence(new int[6], 0);//Random
+        List<Sequence> mSequences = new List<Sequence> { R, A, A, A, R, A, R,A };        
+        session = new Sess(mSequences, 20);
+        //Check if first sequence is Random
+        if(session.MSequences[0].MSequenceName == 0)
         {
-            if (mSequences[i].MSequenceName.Equals("R") && i < mSequences.Count - 1)//It is a random Object in the middle of the list?
+            for(int i=0; i < session.MSequences[0].MOrderedBTNs.Length; i++)
             {
-                mSequences[i].MOrderedBTNs = generateRandomObject(mSequences[i - 1].MOrderedBTNs[3], mSequences[i + 1].MOrderedBTNs[0]);
-            }
-            else if (mSequences[i].MSequenceName.Equals("R") && i == mSequences.Count - 1)//The random object is the last part of the list, so start from the beginning
-            {
-                mSequences[i].MOrderedBTNs = generateRandomObject(mSequences[i - 1].MOrderedBTNs[3], mSequences[0].MOrderedBTNs[0]);
 
             }
         }
-        session = new Sess(mSequences, 20);
-        Sequences = new string[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MIterations];//e.g.: Session has eight Sequences, multiply with four (because of the four buttons) and then the sum of Iterations.
-        mPushedbtn = new string[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MIterations];
-        mTrueBTN = new string[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MIterations];
-        mMeasuredTime = new float[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MIterations];
+        Sequences = new int[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MRepitions];//e.g.: Session has eight Sequences, multiply with four (because of the four buttons) and then the sum of Iterations.
+        mPushedbtn = new int[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MRepitions];
+        mTrueBTN = new int[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MRepitions];
+        mMeasuredTime = new float[session.MSequences.Count * session.MSequences[0].MOrderedBTNs.Length * session.MRepitions];
         CreateSession();
     }
     public void CreateSession()
@@ -187,7 +177,7 @@ public class Session : MonoBehaviour
 
             switch (session.MSequences[seqindex].getspecificBTNElement(BTN_INDEX))//switch-case method: which button is activated?
             {
-                case "A":
+                case 1:
                     B1.color = Color.red;
                     Timer = Time.time;
                     canPress = true;
@@ -199,7 +189,7 @@ public class Session : MonoBehaviour
                         Sequences[index] = session.MSequences[seqindex].MSequenceName;
                         mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                         mMeasuredTime[index] = endtime;
-                        mPushedbtn[index] = "N";
+                        mPushedbtn[index] = 5;
                         index++;
                         canPress = false;
                     }
@@ -213,7 +203,7 @@ public class Session : MonoBehaviour
                     }
                     yield return new WaitForSeconds(.25f);
                     break;
-                case "B":
+                case 2:
                     B2.color = Color.red;
                     Timer = Time.time;
                     canPress = true;
@@ -225,7 +215,7 @@ public class Session : MonoBehaviour
                         Sequences[index] = session.MSequences[seqindex].MSequenceName;
                         mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                         mMeasuredTime[index] = endtime;
-                        mPushedbtn[index] = "N";
+                        mPushedbtn[index] = 5;
                         index++;
                         canPress = false;
                     }
@@ -239,7 +229,7 @@ public class Session : MonoBehaviour
                     }
                     yield return new WaitForSeconds(0.25f);
                     break;
-                case "C":
+                case 3:
                     B3.color = Color.red;
                     Timer = Time.time;
                     canPress = true;
@@ -251,7 +241,7 @@ public class Session : MonoBehaviour
                         Sequences[index] = session.MSequences[seqindex].MSequenceName;
                         mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                         mMeasuredTime[index] = endtime;
-                        mPushedbtn[index] = "N";
+                        mPushedbtn[index] = 5;
                         index++;
                         canPress = false;
                     }
@@ -265,7 +255,7 @@ public class Session : MonoBehaviour
                     }
                     yield return new WaitForSeconds(0.25f);
                     break;
-                case "D":
+                case 4:
                     B4.color = Color.red;
                     Timer = Time.time;
                     canPress = true;
@@ -277,7 +267,7 @@ public class Session : MonoBehaviour
                         Sequences[index] = session.MSequences[seqindex].MSequenceName;
                         mTrueBTN[index] = session.MSequences[seqindex].MOrderedBTNs[BTN_INDEX];
                         mMeasuredTime[index] = endtime;
-                        mPushedbtn[index] = "N";
+                        mPushedbtn[index] = 5;
                         index++;
                         canPress = false;
                     }
@@ -297,14 +287,14 @@ public class Session : MonoBehaviour
         // Rekursiver Aufruf der Klasse
         if (!end)
         {
-            if (ITERARTION_INDEX <= session.MIterations && seqindex < session.MSequences.Count)
+            if (REPITION_INDEX <= session.MRepitions && seqindex < session.MSequences.Count)
             {
                 StartCoroutine(Blink(session, dur));
             }
-            else if (seqindex == session.MSequences.Count && ITERARTION_INDEX + 1 <= session.MIterations)
+            else if (seqindex == session.MSequences.Count && REPITION_INDEX + 1 <= session.MRepitions)
             {
                 Debug.Log("Next Iteration");
-                ITERARTION_INDEX++;
+                REPITION_INDEX++;
                 seqindex = 0;
                 BTN_INDEX = 0;
                 for (int i = 0; i < session.MSequences.Count; i++)
@@ -321,7 +311,7 @@ public class Session : MonoBehaviour
                 }
                 StartCoroutine(Blink(session, dur));
             }
-            else if (ITERARTION_INDEX + 1 > session.MIterations && seqindex == session.MSequences.Count)//END
+            else if (REPITION_INDEX + 1 > session.MRepitions && seqindex == session.MSequences.Count)//END
             {
                 end = true;
                 CSVWriter cs = new CSVWriter(mTrueBTN, Sequences, mPushedbtn, mMeasuredTime);
@@ -334,65 +324,8 @@ public class Session : MonoBehaviour
             }
         }
     }
-    private string[] generateRandomObject(string beginning, string ending, int startIndex = 0, List<string> remove = null, List<string> result = null)
+    private int[] generateRandomObject(int beginning = 0, int ending = 0, int startIndex = 0, List<int> remove = null, List<int> result = null)
     {
-        List<string> sample = new List<string>() { "A", "B", "C", "D" };
-        List<string> removeable = new List<string>();
-        List<string> results = new List<string>();
-        string[] TotalResult = new string[4];
-        int rnd = 0;
-        switch (startIndex)
-        {
-            case 0:
-                sample.Remove(beginning);
-                sample.Add(ending);
-                rnd = Random.Range(0, sample.Count);
-                removeable.Add(sample[rnd]);
-                results.Add(sample[rnd]);
-                return generateRandomObject(beginning, ending, 1, removeable, results);
-
-            case 1:
-                removeable = new List<string>(remove);
-                sample.Remove(removeable[0]);//Remove the first randomly choosen Character, from the random List!
-                results = new List<string>(result);
-                rnd = Random.Range(0, sample.Count);
-                removeable.Add(sample[rnd]);
-                results.Add(sample[rnd]);
-                return generateRandomObject(beginning, ending, 2, removeable, results);
-            case 2:
-                removeable = new List<string>(remove);
-                sample.Remove(removeable[0]);
-                sample.Remove(removeable[1]);
-                results = new List<string>(result);
-                if (sample.Contains(ending))
-                {
-                    results.Add(ending);
-                    removeable.Add(ending);
-                    sample.Remove(ending);
-                    results.Add(sample[0]);
-                    TotalResult[0] = results[0];
-                    TotalResult[1] = results[1];
-                    TotalResult[2] = results[2];
-                    TotalResult[3] = results[3];
-                    return TotalResult;
-                }
-                else
-                {
-                    rnd = Random.Range(0, sample.Count);
-                    results.Add(sample[rnd]);
-                    List<string> copy = new List<string>(results);
-                    sample.Remove(sample[rnd]);
-                    copy.Add(sample[0]);
-                    TotalResult[0] = copy[0];
-                    TotalResult[1] = copy[1];
-                    TotalResult[2] = copy[2];
-                    TotalResult[3] = copy[3];
-                    return TotalResult;
-                }
-
-            default:
-                return TotalResult;
-
-        }
+                
     }
 }

@@ -8,12 +8,12 @@ using System.Globalization;
 public class CSVWriter 
 {
 
-    private string[] mSequences;
-    private string[] mPushedbtn;
+    private int[] mSequences;
+    private int[] mPushedbtn;
     private float [] mMeasuredTime;
-    private string[] mTrueBTN;
+    private int[] mTrueBTN;
 
-    public CSVWriter(string[] mTrueBTN,string[] mSequences, string[] mPushedbtn, float[] mMeasuredTime)
+    public CSVWriter(int[] mTrueBTN,int[] mSequences, int[] mPushedbtn, float[] mMeasuredTime)
     {
         this.mSequences = mSequences;
         this.mPushedbtn = mPushedbtn;

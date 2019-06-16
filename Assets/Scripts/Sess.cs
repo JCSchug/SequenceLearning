@@ -5,12 +5,12 @@ using UnityEngine;
 public class Sess
 {
     private List<Sequence> mSequences; //The list of Sequences
-    private int mIterations; //How often should the session pattern loop trough?
+    private int mRepitions; //How often should the session pattern loop trough?
 
-    public Sess(List<Sequence> mSequences, int mIterations)
+    public Sess(List<Sequence> mSequences, int mRepition)
     {
         this.MSequences = mSequences;
-        this.MIterations = mIterations;
+        this.MRepitions = mRepition;
     }
 
     public List<Sequence> MSequences//public property field for getting and setting the value from mSequences
@@ -26,16 +26,16 @@ public class Sess
         }
     }
 
-    public int MIterations//public property field for getting and setting the value from mIterations
+    public int MRepitions//public property field for getting and setting the value from mIterations
     {
         get
         {
-            return mIterations;
+            return mRepitions;
         }
 
         set
         {
-            mIterations = value;
+            mRepitions = value;
         }
     }
 }
