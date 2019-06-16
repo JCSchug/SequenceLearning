@@ -56,7 +56,7 @@ public class CSVWriter
                 return Application.dataPath + "/CSV/Testing/";
 #else
                 Directory.CreateDirectory(Application.persistentDataPath + "/CSV/Testing/");
-                return Application.persistentDataPath + ""/CSV/Testing/";
+                return Application.persistentDataPath + "/CSV/Testing/";
 #endif
             }
             else
