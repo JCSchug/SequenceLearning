@@ -45,7 +45,7 @@ public class Subject_Counting : MonoBehaviour
     }
     public static void setSNR()
     {
-        SNR++;
+        
         StreamWriter streamWriter = new StreamWriter(persistenceTXTPATH);
         streamWriter.WriteLine(SNR);
         streamWriter.Flush();

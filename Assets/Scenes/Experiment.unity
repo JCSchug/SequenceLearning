@@ -1380,6 +1380,7 @@ MonoBehaviour:
   repcounter: 0
   seqindex: 0
   blockindex: 0
+  pattern: 
   Timer: 0
   endtime: 0
   end: 0
@@ -2000,8 +2001,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420030}
-        m_MethodName: onClicMenu
+      - m_Target: {fileID: 519420033}
+        m_MethodName: onClickMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -60,7 +60,11 @@ public class StartSession : MonoBehaviour
 
 
     }
-
+    public void onClickMenu()
+    {
+        Subject_Counting.setSNR();
+        SceneManager.LoadScene(0);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -271,33 +275,13 @@ public class StartSession : MonoBehaviour
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /* for (int i = 0; i < pattern.Count; i++)
         {
           Debug.Log(pattern[i]);
 
         } */
 
-
-
        StartCoroutine(Blink(pattern[0], 2f));
-
-
-
 
     }
 
