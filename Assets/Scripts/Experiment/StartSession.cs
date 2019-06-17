@@ -100,81 +100,113 @@ public class StartSession : MonoBehaviour
 
     private void init()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 20; i++)//0
         {
-          
-           //20X6
-
-            // obj 1  .... 0-5 btnindex
-            //obj 2 ....
-            
-            RandomSequence rs = new RandomSequence();
-            for (int j = 0; j < 6; j++)
+//#1
+            if (seqcounter == 0)
             {
+                RandomSequence rs = new RandomSequence();
+                for (int j = 0; j < 6; j++){
                 pattern.Add(rs.Btnindex[j]);
                 Sequences[seqcounter] = 0;
                 seqcounter++;
+                }
             }
-            
-
-        }
-
-
-        for (int i = 0; i < 20; i++)
-        {
-          
-            SystematicSequence ss = new SystematicSequence();
-            for (int j = 0; j < 6; j++)
+            else if(seqcounter == 119)
             {
-                pattern.Add(ss.Btnindex[j]);
-                Sequences[seqcounter] = 1;
-                seqcounter++;
-            }
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-           
-            SystematicSequence ss = new SystematicSequence();
-            for (int j = 0; j < 6; j++)
-            {
-                pattern.Add(ss.Btnindex[j]);
-                Sequences[seqcounter] = 1;
-                seqcounter++;
-            }
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-            
-            SystematicSequence ss = new SystematicSequence();
-            for (int j = 0; j < 6; j++)
-            {
-                pattern.Add(ss.Btnindex[j]);
-                Sequences[seqcounter] = 1;
-                seqcounter++;
-            }
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-           
-            RandomSequence rs = new RandomSequence();
-            for (int j = 0; j < 6; j++)
-            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter - 1], 1);
+                for (int j = 0; j < 6; j++){
                 pattern.Add(rs.Btnindex[j]);
                 Sequences[seqcounter] = 0;
                 seqcounter++;
+                }
             }
+            else
+            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter-1]);
+                for (int j = 0; j < 6; j++){
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+
         }
 
 
+        for (int i = 0; i < 20; i++)//1
+        {
+            //#2 240
+            SystematicSequence ss = new SystematicSequence();
+            for (int j = 0; j < 6; j++)
+            {
+                pattern.Add(ss.Btnindex[j]);
+                Sequences[seqcounter] = 1;
+                seqcounter++;
+            }
+        }
 
+        for (int i = 0; i < 20; i++)//1
+        {
+            //#3 360
+            SystematicSequence ss = new SystematicSequence();
+            for (int j = 0; j < 6; j++)
+            {
+                pattern.Add(ss.Btnindex[j]);
+                Sequences[seqcounter] = 1;
+                seqcounter++;
+            }
+        }
 
+        for (int i = 0; i < 20; i++)//1
+        {
+            //#4 480
+            SystematicSequence ss = new SystematicSequence();
+            for (int j = 0; j < 6; j++)
+            {
+                pattern.Add(ss.Btnindex[j]);
+                Sequences[seqcounter] = 1;
+                seqcounter++;
+            }
+        }
+
+        for (int i = 0; i < 20; i++)//0
+        {
+            
+            if (seqcounter == 479)
+            {//#5
+                RandomSequence rs = new RandomSequence(pattern[seqcounter]);
+                for (int j = 0; j < 6; j++){
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+            else if (seqcounter == 599)
+            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter - 1], 1);
+                for (int j = 0; j < 6; j++){
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+            else
+            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter - 1]);
+                for (int j = 0; j < 6; j++){
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+            
+            
+        }
 
         for (int i = 0; i < 20; i++)
         {
-          
+            //#6
             SystematicSequence ss = new SystematicSequence();
             for (int j = 0; j < 6; j++)
             {
@@ -187,14 +219,37 @@ public class StartSession : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-           
-            RandomSequence rs = new RandomSequence();
-            for (int j = 0; j < 6; j++)
-            {
+            if (seqcounter == 719)
+            {//#7
+                RandomSequence rs = new RandomSequence(pattern[seqcounter]);
+                for (int j = 0; j < 6; j++)
+                {
                 pattern.Add(rs.Btnindex[j]);
                 Sequences[seqcounter] = 0;
                 seqcounter++;
+                }
             }
+            else if (seqcounter == 839)
+            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter - 1], 1);
+                for (int j = 0; j < 6; j++)
+                {
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+            else
+            {
+                RandomSequence rs = new RandomSequence(pattern[seqcounter - 1]);
+                for (int j = 0; j < 6; j++)
+                {
+                pattern.Add(rs.Btnindex[j]);
+                Sequences[seqcounter] = 0;
+                seqcounter++;
+                }
+            }
+           
         }
 
 
@@ -203,7 +258,7 @@ public class StartSession : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-           
+            //#8
             SystematicSequence ss = new SystematicSequence();
             for (int j = 0; j < 6; j++)
             {
