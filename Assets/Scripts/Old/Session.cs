@@ -324,8 +324,8 @@ public class Session : MonoBehaviour
             else if (ITERARTION_INDEX + 1 > session.MIterations && seqindex == session.MSequences.Count)//END
             {
                 end = true;
-                CSVWriter cs = new CSVWriter(mTrueBTN, Sequences, mPushedbtn, mMeasuredTime);
-                cs.GenerateCSVFile(0);
+              //  CSVWriter cs = new CSVWriter(mTrueBTN, Sequences, mPushedbtn, mMeasuredTime);
+                //cs.GenerateCSVFile(0);
                 B1.color = Color.green;
                 B2.color = Color.green;
                 B3.color = Color.green;

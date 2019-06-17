@@ -8,12 +8,12 @@ using System.Globalization;
 public class CSVWriter 
 {
 
-    private string[] mSequences;
-    private string[] mPushedbtn;
+    private int[] mSequences;
+    private int[] mPushedbtn;
     private float [] mMeasuredTime;
-    private string[] mTrueBTN;
+    private int[] mTrueBTN;
 
-    public CSVWriter(string[] mTrueBTN,string[] mSequences, string[] mPushedbtn, float[] mMeasuredTime)
+    public CSVWriter(int[] mTrueBTN,int[] mSequences, int[] mPushedbtn, float[] mMeasuredTime)
     {
         this.mSequences = mSequences;
         this.mPushedbtn = mPushedbtn;
@@ -36,7 +36,7 @@ public class CSVWriter
                 success = true;
             else
                 success = false;
-            csvWriter.WriteLine(mSequences[i] + "," + mTrueBTN[i]+","+ mPushedbtn[i] + "," + success+"," + mMeasuredTime[i].ToString("F2", CultureInfo.InvariantCulture));
+            csvWriter.WriteLine(mSequences[i].ToString() + "," + mTrueBTN[i].ToString()+","+ mPushedbtn[i].ToString() + "," + success+"," + mMeasuredTime[i].ToString("F2", CultureInfo.InvariantCulture));
 
         }
         csvWriter.Flush();
