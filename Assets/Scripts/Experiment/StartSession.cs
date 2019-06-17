@@ -386,7 +386,7 @@ public class StartSession : MonoBehaviour
                 //
                 canPress = true;
                 
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L));
+                yield return new WaitUntil(() => Input.anyKey);
               
 
                 B1.color = Color.white;
@@ -412,9 +412,9 @@ public class StartSession : MonoBehaviour
                 Timer = Time.time;
 
                 canPress = true;
-             
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L));
-                canPress = false;
+
+            yield return new WaitUntil(() => Input.anyKey);
+            canPress = false;
 
 
                 B2.color = Color.white;
@@ -441,9 +441,9 @@ public class StartSession : MonoBehaviour
 
                 //Buttons
                 canPress = true;
-              
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L));
-                canPress = false;
+
+            yield return new WaitUntil(() => Input.anyKey);
+            canPress = false;
 
                 //
                 B3.color = Color.white;
@@ -470,9 +470,9 @@ public class StartSession : MonoBehaviour
 
                 //Buttonpress
                 canPress = true;
-            
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L));
-                canPress = false;
+
+            yield return new WaitUntil(() => Input.anyKey);
+            canPress = false;
 
                 B4.color = Color.white;
                 yield return new WaitForSeconds(0.25f);
