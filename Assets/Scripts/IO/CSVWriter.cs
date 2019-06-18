@@ -75,13 +75,20 @@ public class CSVWriter
                 csvWriter.Close();
                 break;
             case 1://Serializing Data From First Questionaire
+                if (mSex.ToLower().Equals("männlich"))
+                {
+                    mSex = "male";
+                }else if (mSex.ToLower().Equals("weiblich"))
+                {
+                    mSex = "female";
+                }
                 csvWriter.WriteLine("Sex,Age,PlayingGames,PlayingGamesHours,PlayingInstrument,Instrument");
                 csvWriter.WriteLine(mSex + "," +mAge+","+ mPlayingGames +"," + mHowManyHours + "," + mPlayingInstrument + "," + mInstrument);
                 csvWriter.Flush();
                 csvWriter.Close();
                 break;
             case 2://Serializing Data From Last Questionaire
-                csvWriter.WriteLine("Somethinghappend,RandomOrNot,TryToDraw");
+                csvWriter.WriteLine("Somethinghappend,Random,TryToDraw");
                 csvWriter.WriteLine(mSomethingHappend + "," + mRandomOrNot + "," + mTryToDraw);
                 csvWriter.WriteLine("guessedorder");
                 for(int i=0; i< ChoosenSequences.Length; i++)
