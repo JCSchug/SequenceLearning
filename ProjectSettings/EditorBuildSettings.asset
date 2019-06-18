@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: fa5abfcaf0e69294688f9d1a630956a5
   - enabled: 1
+    path: Assets/Scenes/Introduction.unity
+    guid: 60e92bf96633b33438d41174f4922f4f
+  - enabled: 1
+    path: Assets/Scenes/Questionaire_DATA.unity
+    guid: 203f21f4e6ed29b468143ffbac993ae1
+  - enabled: 1
     path: Assets/Scenes/Demo.unity
     guid: 6c35db0c2c023354c805ad770612741e
   - enabled: 1
     path: Assets/Scenes/Experiment.unity
     guid: 35d7126525a4a444981a36765e27e466
+  - enabled: 1
+    path: Assets/Scenes/Questionaire_FINAL.unity
+    guid: 987dc78b642b87649afcaca15a33826c
   m_configObjects: {}

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -222,9 +222,9 @@ GameObject:
   - component: {fileID: 655874238}
   - component: {fileID: 655874233}
   - component: {fileID: 655874232}
-  - component: {fileID: 655874235}
   - component: {fileID: 655874236}
   - component: {fileID: 655874234}
+  - component: {fileID: 655874235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -306,14 +306,6 @@ MonoBehaviour:
   B2: {fileID: 1396809420}
   B3: {fileID: 2046910761}
   B4: {fileID: 889616606}
-  Timer: 0
-  endtime: 0
-  mSequences: []
-  mPushedbtn: []
-  mMeasuredTime: []
-  seqindex: 0
-  result: 0
-  canPress: 0
   text: {fileID: 747256975}
 --- !u!33 &655874236
 MeshFilter:
@@ -760,9 +752,9 @@ RectTransform:
   m_Father: {fileID: 451240643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 316, y: -177}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -150, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685498221

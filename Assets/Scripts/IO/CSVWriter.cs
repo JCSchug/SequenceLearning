@@ -5,15 +5,27 @@ using System.IO;
 using System;
 using System.Globalization;
 
-public class CSVWriter 
+public class CSVWriter
 {
-
+    //Serializing Data in Main Application
     private int[] mSequences;
     private int[] mPushedbtn;
-    private float [] mMeasuredTime;
+    private float[] mMeasuredTime;
     private int[] mTrueBTN;
+    //Serializing Data in First Questionaire
+    private string mSex;
+    private int mAge;
+    private bool mPlayingGames;
+    private string mHowManyHours;
+    private bool mPlayingInstrument;
+    private string mInstrument;
+    //Serializing Data in Last Questionaire
+    private bool mSomethingHappend;
+    private bool mRandomOrNot;
+    private bool mTryToDraw;
+    private int[] ChoosenSequences; 
 
-    public CSVWriter(int[] mTrueBTN,int[] mSequences, int[] mPushedbtn, float[] mMeasuredTime)
+    public CSVWriter(int[] mTrueBTN, int[] mSequences, int[] mPushedbtn, float[] mMeasuredTime)//Constructor for Serializing Data From Main Application
     {
         this.mSequences = mSequences;
         this.mPushedbtn = mPushedbtn;
@@ -21,26 +33,93 @@ public class CSVWriter
         this.mTrueBTN = mTrueBTN;
     }
 
+    public CSVWriter(string mSex, int mAge, bool mPlayingGames, string mHowManyHours, bool mPlayingInstrument, string mInstrument)//Constructor for Serializing Data From Main Application
+    {
+        this.mSex = mSex;
+        this.mAge = mAge;
+        this.mPlayingGames = mPlayingGames;
+        this.mHowManyHours = mHowManyHours;
+        this.mPlayingInstrument = mPlayingInstrument;
+        this.mInstrument = mInstrument;
+    }
+
+    public CSVWriter(bool mSomethingHappend, bool mRandomOrNot, bool mTryToDraw, int[] choosenSequences)
+    {
+        this.mSomethingHappend = mSomethingHappend;
+        this.mRandomOrNot = mRandomOrNot;
+        this.mTryToDraw = mTryToDraw;
+        ChoosenSequences = choosenSequences;
+    }
+
     public void GenerateCSVFile(int index)
     {
         string date = DateTime.Now.ToString("dd-MM-yyyy+HH-mm-ss");
-        string filepath = getPath(index) + "Probant"+Subject_Counting.getSNR()+"+"+ date + ".csv";
-        Debug.Log(filepath);
+        string filepath = getPath(index) + "Probant" + Subject_Counting.getSNR() + "+" + date + ".csv";
         StreamWriter csvWriter = new StreamWriter(filepath);
-        csvWriter.WriteLine("Sequence,trueBtn,pushedBTN,succes,measuredTime");
-        bool success = false;
-        for (int i = 0; i < mPushedbtn.Length; i++)
+        switch (index)
         {
+            case 0://Serializing Data From Main Application
+                Debug.Log(filepath);
+                csvWriter.WriteLine("Sequence,trueBtn,pushedBTN,succes,measuredTime");
+                bool success = false;
+                for (int i = 0; i < mPushedbtn.Length; i++)
+                {
 
-            if (mPushedbtn[i].Equals(mTrueBTN[i]))
-                success = true;
-            else
-                success = false;
-            csvWriter.WriteLine(mSequences[i].ToString() + "," + mTrueBTN[i].ToString()+","+ mPushedbtn[i].ToString() + "," + success+"," + mMeasuredTime[i].ToString("F2", CultureInfo.InvariantCulture));
+                    if (mPushedbtn[i].Equals(mTrueBTN[i]))
+                        success = true;
+                    else
+                        success = false;
+                    csvWriter.WriteLine(mSequences[i].ToString() + "," + mTrueBTN[i].ToString() + "," + mPushedbtn[i].ToString() + "," + success + "," + mMeasuredTime[i].ToString("F2", CultureInfo.InvariantCulture));
+                }
+                csvWriter.Flush();
+                csvWriter.Close();
+                break;
+            case 1://Serializing Data From First Questionaire
+                csvWriter.WriteLine("Sex,Age,PlayingGames,PlayingGamesHours,PlayingInstrument,Instrument");
+                csvWriter.WriteLine(mSex + "," +mAge+","+ mPlayingGames +"," + mHowManyHours + "," + mPlayingInstrument + "," + mInstrument);
+                csvWriter.Flush();
+                csvWriter.Close();
+                break;
+            case 2://Serializing Data From Last Questionaire
+                csvWriter.WriteLine("Somethinghappend,RandomOrNot,TryToDraw");
+                csvWriter.WriteLine(mSomethingHappend + "," + mRandomOrNot + "," + mTryToDraw);
+                csvWriter.WriteLine("guessedorder");
+                for(int i=0; i< ChoosenSequences.Length; i++)
+                {
+                    if(i == 0)
+                    {
+                        csvWriter.Write(ChoosenSequences[i] + ",");
+                    }else if(i == 1)
+                    {
+                        csvWriter.Write(ChoosenSequences[i] + ",");
+                    }
+                    else if (i == 2)
+                    {
+                        csvWriter.Write(ChoosenSequences[i] + ",");
+                    }
+                    else if (i == 3)
+                    {
+                        csvWriter.Write(ChoosenSequences[i] + "\n");
+                    }
+                    if(i > 3)
+                    {
+                        
+                        if (i%4 == 3)
+                        {
+                            csvWriter.Write(ChoosenSequences[i] + "\n");
+                        }
+                        else
+                        {
+                            csvWriter.Write(ChoosenSequences[i] + ",");
+                        }
+                    }
+                }
+                csvWriter.Flush();
+                csvWriter.Close();
+                break;
 
         }
-        csvWriter.Flush();
-        csvWriter.Close();
+
     }
 
 

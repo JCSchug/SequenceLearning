@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Introduction : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class Introduction : MonoBehaviour
 
     void Update()
     {
-       
+       if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     void OnGUI()

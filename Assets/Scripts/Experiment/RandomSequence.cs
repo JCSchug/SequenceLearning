@@ -21,7 +21,6 @@ public class RandomSequence
             Btnindex = generateRandomObject(0);
         }
         
-       //  createRandomSequence();
 
     }
 
@@ -39,7 +38,7 @@ public class RandomSequence
         else if (index == totalResult.Length - 1 && random[rnd] == 1)
         {
             //Die letzte Zahl
-            Debug.Log("Kritische Stelle");
+            //Debug.Log("Kritische Stelle");
             return generateRandomObject(index, lastnumber, totalResult, beginning);
         }   
         else
@@ -60,26 +59,5 @@ public class RandomSequence
         }
 
     }
-    //1. RandomSequenz:
-    //object.BtnIndex = object.generateRandomObject(0);
-    //
-
-
-
-
-
-    public void createRandomSequence()
-    {
-
-        for (int i = 0; i < btnindex.Length; i++)
-        {
-            btnindex[i] = (int)Random.Range(0, 4) + 1;
-
-        }
-
-
-
-
-
-    }
+  
 }
