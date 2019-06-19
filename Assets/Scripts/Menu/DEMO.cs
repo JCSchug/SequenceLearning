@@ -31,8 +31,15 @@ public class DEMO : MonoBehaviour
         Invoke("START", 1f);
 
         indexer = PlayerPrefs.GetInt("indexer", indexer);
+        if(indexer == 1)
+        {
+            text.text = "Start des Experiments";
+        }
+        else
+        {
+            text.text = "Neustarten(" + indexer + ")";
+        }
         
-        text.text = "Neustarten(" +indexer + ")";
     }
    
     public void onClickRestart()
