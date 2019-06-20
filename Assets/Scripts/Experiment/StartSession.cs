@@ -67,27 +67,27 @@ public class StartSession : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 10));
+            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
             mPushedbtn[btrcounter] = 1;
             canPress = false;
 
         }
         if (Input.GetKeyDown(KeyCode.S) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 10));
+            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
             mPushedbtn[btrcounter] = 2;
             canPress = false;
         }
 
         if (Input.GetKeyDown(KeyCode.K) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 10));
+            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
             mPushedbtn[btrcounter] = 3;
             canPress = false;
         }
         if (Input.GetKeyDown(KeyCode.L) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 10));
+            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
             mPushedbtn[btrcounter] = 4;
             canPress = false;
         }
