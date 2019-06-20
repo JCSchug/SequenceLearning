@@ -37,7 +37,7 @@ public class DEMO : MonoBehaviour
         }
         else
         {
-            text.text = "Neustarten(" + indexer + ")";
+            text.text = "Neustarten";
         }
         
     }
