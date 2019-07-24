@@ -33,13 +33,13 @@ public class StartSession : MonoBehaviour
     public float[] mMeasuredTime = new float[960];
     public int[] mTrueBTN = new int[960];
 
-    //
+    //Indizes Counter
     public int repcounter = 0;
     public int seqindex = 0;
     public int blockindex = 0;
 
 
-    //
+    //The pattern for the experiment
     public List<int> pattern = new List<int>();
     //Timers
     public float Timer = 0;
@@ -67,27 +67,31 @@ public class StartSession : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
+            mMeasuredTime[btrcounter] = Math.Abs(Time.time  - Timer );
             mPushedbtn[btrcounter] = 1;
             canPress = false;
 
         }
         if (Input.GetKeyDown(KeyCode.S) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
+            mMeasuredTime[btrcounter] = Math.Abs(Time.time - Timer );
             mPushedbtn[btrcounter] = 2;
             canPress = false;
         }
 
         if (Input.GetKeyDown(KeyCode.K) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
+            mMeasuredTime[btrcounter] = Math.Abs(Time.time - Timer);
             mPushedbtn[btrcounter] = 3;
             canPress = false;
         }
         if (Input.GetKeyDown(KeyCode.L) && canPress)
         {
-            mMeasuredTime[btrcounter] = (Math.Abs(Time.time - Timer * 1000f)%1000);
+            mMeasuredTime[btrcounter] = Math.Abs(Time.time - Timer );
+            //Was hätte abgespeichert werden sollen:
+            //mMeasuredTime[btrcounter] = Math.Abs(Time.time*1000 - Timer*1000);
+            //Was abgespeichert wurde:
+            //mMeasuredTime[btrcounter] = Math.Abs(Time.time - Timer*1000 )%1000;
             mPushedbtn[btrcounter] = 4;
             canPress = false;
         }

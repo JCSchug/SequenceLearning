@@ -11,5 +11,14 @@ public class SystematicSequence
 
     }
 
-    public int[] Btnindex { get => btnindex; set => btnindex = value; }
+    public int[] Btnindex {
+        get
+        {
+            return btnindex;
+        }
+        set
+        {
+            btnindex = value;
+        }
+    }
 }
