@@ -15,3 +15,7 @@ Bei dem Experiment werden vier weiße Kreise auf einem schwarzen Hintergrund dar
 Die Idee bei dem Experiment ist es nach einer gewissen Anzahl von zufälligen Sequenzen, eine geordnete (nicht zufällige) Sequenz zu starten. Interessant ist es dann beim letzten Fragebogen zu sehen, ob ein Proband die geordnete Sequenz erkannt hat. 
 Die räumlich zugeordneten Tasten sind A,S und K,L. Dass heißt der erste Kreis von links aus gesehen ist von der Taste A belegt, der zweite Kreis von links mit der Taste S usw. .  
 ## Funktionalität der Anwendung und Sicherung der Daten
+Zum Verwalten der Anzahl der Probanden wird die txt Datei "count.txt" benutzt, die geöffnet und verändert werden kann. Zu finden ist die .txt Datei bei Windows unter "AppData/LocalLow/DefaultCompany/Methodik der Forschung/NR".  
+Die Ergebnisse der Fragebögen sind in Windows jeweils unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_DATA" (Fragebogen zur Datenerhebung) und "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_FINAL" (Abschließender Fragebogen).  
+Die Ergebnisse des Experiments sind unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Testing" zu finden.  
+Alle Testdaten werden im .csv Format gespeichert, somit kann eine problemblose Integrierung zum Beispiel in R Studio erfolgen.
