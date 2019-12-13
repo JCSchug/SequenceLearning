@@ -24,9 +24,19 @@ Zum Verwalten der Anzahl der Probanden wird die txt Datei "count.txt" benutzt, d
 Die Ergebnisse der Fragebögen sind in Windows jeweils unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_DATA" (Fragebogen zur Datenerhebung) und "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_FINAL" (Abschließender Fragebogen).  
 Die Ergebnisse des Experiments sind unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Testing" zu finden.  
 Alle Testdaten werden im .csv Format gespeichert, somit kann eine problemblose Integrierung zum Beispiel in R Studio erfolgen.
-### Aufbau und Erläuterung der .csv-Dateien
 
 <a name="build"></a>
 ## Erstellen (Builden) von Unity Projekten
+Es gibt bereits eine erstellte .exe Datei in diesem Projekt (zu finden im Ornder "build"). Haben Sie aber Änderungen an dem Projekt vorgenommen und möchten nun das Projekt neu erstellen so befolgen Sie folgende Schritte:
+* Überprüfen Sie zu erst, ob alle Übergänge zu den verschiedenen Szenen erfolgreich waren, indem Sie im Unity Editor auf die Play Taste drücken und führen Sie dann anschließend eine manuelle Testphase durch. Die Szenenübergänge werden im aktuellen Projekt über die C# Skripte "MainMenuIntercation.cs","OnCreateQuestionaire_DATA.cs","DEMO.cs","IntroductionSwitcher.cs","StartSession.cs" und "OnCreateQuestionaire_FINAL.cs" geregelt.
+* Achten Sie dringend darauf, das die Build-Order korrekt angpasst ist, dazu gehen Sie im Unity Editor auf "File -> Build Settings", nun sollte ein Fesnter wie in ... erscheinen. Dort sehen Sie die Build-Order in numerischer Reihenfolge, dass heißt Ihre Start-Szene beginnt vorner mit einer 0, Ihre zweite mit einer 1 , usw. .
+* Diese Anwendung wurde mit einem Windows System entwickelt und ausgeführt, Tests auf anderen Plattformen wurde noch nicht durchgeführt. Deshalb wäre der nächste Schritt das Builden oder auch Erstellen gennant. hierbei lassen Sie alle Einstellungen wie im Bild ... gezeigt und wählen dann "Build and Run" aus.
+* Anschließend können Sie einen Ordner auswählen, in dem Sie die fertig erstellte Anwendung abspeichern möchten. Empfehlenswert ist der "build"- Ordner der diesem Projekt schon zugeordnet ist, da Sie so immer alles zentral in Ihrem Projektverzeichnis verwalten können.
+* Sollte sich eine bereits fertig erstellte Anwendung in dem "build" Verzeichnis befinden, so können Sie die darin enthaltenen Datei erhalten lassen und die Anwendung einfach nochmal erstellen lassen. Im Normalfall sollten die alten Dateien gelöscht und durch die neuen erstellten Dateien ersetzt werden. Sollte jedoch ein Fehler auftauchen, so löschen Sie einfach den Inhalt des "build" Verzeichnisses.
 <a name="support"></a>
 ## Hilfreiche Quellen 
+Hier sind noch einige interessante Quellen, falls Sie sich mit der Erstellung neuer Szenen oder UI-Elementen (für das Erstellen eines neuen Fragebogens zum Beispiel) beschäftigen möchten:
+* [Unity-Dokumentation rund um das UI-System in Unity (sehr einsteigerfreundlich)](https://docs.unity3d.com/2018.3/Documentation/Manual/UISystem.html)
+* [Was sind Szenen in Unity? Und wie erstelle ich diese?](https://docs.unity3d.com/2018.3/Documentation/Manual/CreatingScenes.html)
+* [Wie kann ich am Besten eigene 2D-Texturen in mein vorhandenes UI integrieren?](https://docs.unity3d.com/2018.3/Documentation/Manual/Sprites.html)
+* Falls Sie Fragen zur Anwendung haben, so können Sie diese in den "Issues" Reiter dieses Repositories stellen. 
