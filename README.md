@@ -33,10 +33,11 @@ Inhalt:
 <a name="funktionen"></a>
 ## Funktionalität der Anwendung und Sicherung der Daten
 
-Zum Verwalten der Anzahl der Probanden wird die txt Datei "count.txt" benutzt, die geöffnet und verändert werden kann. Zu finden ist die .txt Datei bei Windows unter "AppData/LocalLow/DefaultCompany/Methodik der Forschung/NR".  
-Die Ergebnisse der Fragebögen sind in Windows jeweils unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_DATA" (Fragebogen zur Datenerhebung) und "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_FINAL" (Abschließender Fragebogen).  
-Die Ergebnisse des Experiments sind unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Testing" zu finden.  
-Alle Testdaten werden im .csv Format gespeichert, somit kann eine problemblose Integrierung zum Beispiel in R Studio erfolgen.
+<dl>Zum Verwalten der Anzahl der Probanden wird die txt Datei "count.txt" benutzt, die geöffnet und verändert werden kann.</dl>
+<dl>Zu finden ist die .txt Datei bei Windows unter "AppData/LocalLow/DefaultCompany/Methodik der Forschung/NR".  </dl>
+<dl>Die Ergebnisse der Fragebögen sind in Windows jeweils unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_DATA" (Fragebogen zur Datenerhebung) und "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Questionaire_FINAL" (Abschließender Fragebogen).  </dl>
+<dl> Die Ergebnisse des Experiments sind unter "AppData\LocalLow\DefaultCompany\Methodik der Forschung\CSV\Testing" zu finden.</dl>  
+<dl>Alle Testdaten werden im .csv Format gespeichert, somit kann eine problemblose Integrierung zum Beispiel in R Studio erfolgen.</dl>
 
 <a name="build"></a>
 ## Erstellen (Builden) von Unity Projekten
